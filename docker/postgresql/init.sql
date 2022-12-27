@@ -1,2 +1,2 @@
-CREATE DATABASE itbooksdb_products;
-CREATE DATABASE itbooksdb_orders;
+CREATE DATABASE itbooksdb_product;
+CREATE DATABASE itbooksdb_order;
