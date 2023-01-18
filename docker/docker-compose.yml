@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  catalog-service:
+  product-service:
     depends_on:
       - itbooks-postgres
     image: "product-service"
@@ -37,3 +37,9 @@ services:
       - POSTGRES_PASSWORD=password
     volumes:
       - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      
+  itbooks-redis:
+    image: "redis:7.0"
+    container_name: "itbooks-redis"
+    ports:
+      - 6379:6379
