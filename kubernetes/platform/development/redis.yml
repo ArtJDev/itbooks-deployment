@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itbooks-redis
+  labels:
+    db: itbooks-redis
+spec:
+  selector:
+    matchLabels:
+      db: itbooks-redis
+  template:
+    metadata:
+      labels:
+        db: itbooks-redis
+    spec:
+      containers:
+        - name: itbooks-redis
+          image: redis:7.0
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+            limits:
+              cpu: 200m
+              memory: 100Mi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: itbooks-redis
+  labels:
+    db: itbooks-redis
+spec:
+  type: ClusterIP
+  selector:
+    db: itbooks-redis
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
