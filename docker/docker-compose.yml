@@ -75,3 +75,12 @@ services:
     container_name: "itbooks-redis"
     ports:
       - 6379:6379
+  
+  itbooks-rabbitmq:
+    image: rabbitmq:3.11
+    container_name: itbooks-rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
